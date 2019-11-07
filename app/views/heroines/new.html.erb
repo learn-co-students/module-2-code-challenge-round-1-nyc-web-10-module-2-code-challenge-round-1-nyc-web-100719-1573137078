@@ -1,5 +1,7 @@
 <h1> Create a new Heroine</h1>
-
+<% if flash[:error]%>
+    <p>ERROR: <%= flash[:error].first%></p>
+<%end%>
 
 <%= form_for @heroine do |f| %>
     <%= f.label :name%>
