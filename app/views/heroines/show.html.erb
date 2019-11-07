@@ -1,0 +1,6 @@
+<p>This is <%= @heroine.super_name %>'s page</p>
+
+<hr>
+<p>My name is: <%= @heroine.name %></p>
+<p>But, my super name is: <%= @heroine.super_name %></p>
+<p>My power is: <%= link_to @heroine.power.name, power_path(@heroine.power) %>!</p>
