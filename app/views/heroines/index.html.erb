@@ -3,12 +3,35 @@
 <%= link_to "Create New Heroine", new_heroine_path%>
 <hr>
 <br>
-<ul>
-  <% @heroines.each do |heroine| %>
-    <li>
-      <%= link_to heroine.super_name, heroine_path(heroine)%>
-     
-    </li>
-    <br>
-  <% end %>
-</ul>
+<br>
+<%= form_tag filter_path do %>
+  <p>Filter by Power: <%= collection_select :heroine, :power_id, @powers, :id, :name, prompt: true%></p>
+  <%= submit_tag "Filter"%>
+<%end%>
+<br>
+
+<%if @heroines_filtered%>
+  <ul>
+    <% @heroines_filtered.each do |heroine| %>
+      <li>
+        <%= link_to heroine.super_name, heroine_path(heroine)%>
+      
+      </li>
+      <br>
+    <% end %>
+  </ul>
+  <hr>
+  <%=link_to "Show All heroines", heroines_path%>
+<%else%>
+
+  <ul>
+    <% @heroines.each do |heroine| %>
+      <li>
+        <%= link_to heroine.super_name, heroine_path(heroine)%>
+      
+      </li>
+      <br>
+    <% end %>
+  </ul>
+
+<%end%>
