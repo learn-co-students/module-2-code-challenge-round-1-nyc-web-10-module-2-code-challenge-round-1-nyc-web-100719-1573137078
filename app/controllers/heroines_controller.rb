@@ -1,6 +1,10 @@
 class HeroinesController < ApplicationController
   def index
-    @heroines = Heroine.all
+    if params[:search]
+      @heroines = Heroine.search(params[:search]).order("created_at DESC")
+    else
+      @heroines = Heroine.all
+    end
   end
 
   def show

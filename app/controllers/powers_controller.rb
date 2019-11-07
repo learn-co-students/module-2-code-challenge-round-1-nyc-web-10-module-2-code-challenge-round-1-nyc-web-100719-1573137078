@@ -6,4 +6,13 @@ class PowersController < ApplicationController
   def show
     @power = Power.find(params[:id])
   end
+
+  def search
+    if params[:search].blank?
+      redirect_to heroines_path
+    else
+      @parameter = params[:search].downcase
+      @results = Power.all.where("lower(name) LIKE :search", search: @parameter)
+    end
+  end
 end

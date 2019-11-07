@@ -9,5 +9,6 @@ Rails.application.routes.draw do
 
   get 'powers/', to: "powers#index", as: 'powers'
   get 'powers/:id', to: "powers#show", as: 'power'
+  get '/search', to: "powers#search", as: 'search_power'
 
 end
